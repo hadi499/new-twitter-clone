@@ -7,12 +7,12 @@ import { redirect } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function Home({ newsResults, randomUsersResults }) {
-  const { data: session } = useSession({
-    required: true,
-    onUnauthenticated() {
-      redirect("/auth/signin");
-    },
-  });
+  // const { data: session } = useSession({
+  //   required: true,
+  //   onUnauthenticated() {
+  //     redirect("/auth/signin");
+  //   },
+  // });
 
   const [news, setNews] = useState([]);
   const [randomUsers, setRandomUsers] = useState([]);

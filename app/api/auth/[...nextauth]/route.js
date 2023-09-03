@@ -11,6 +11,18 @@ export const authOptions = {
   pages: {
     signIn: "/auth/signin",
   },
+  secret: process.env.NEXTAUTH_SECRET,
+
+  callbacks: {
+    async session({ session, token }) {
+      session.user.username = session.user.name
+        .split(" ")
+        .join("")
+        .toLocaleLowerCase();
+      session.user.uid = token.sub;
+      return session;
+    },
+  },
 };
 
 const handler = NextAuth(authOptions);
